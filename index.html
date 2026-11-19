@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Can You Escape the Maze? | Algorithm Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <div class="eyebrow">POST-AP COMPUTER SCIENCE · ALGORITHM LAB</div>
+      <h1>Can You Escape the Maze?</h1>
+      <p>Watch two graph-traversal algorithms think differently as they search for the same destination.</p>
+    </header>
+
+    <section class="toolbar panel" aria-label="Visualizer controls">
+      <div class="control-group">
+        <label for="algorithm">Algorithm</label>
+        <select id="algorithm">
+          <option value="bfs">Breadth-First Search (BFS)</option>
+          <option value="dfs">Depth-First Search (DFS)</option>
+        </select>
+      </div>
+      <div class="control-group">
+        <label for="speed">Animation speed</label>
+        <select id="speed">
+          <option value="slow">Slow — explain each move</option>
+          <option value="normal" selected>Normal</option>
+          <option value="fast">Fast — quick overview</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button id="runBtn" class="primary">▶ Run</button>
+        <button id="stepBtn">Step</button>
+        <button id="resetBtn" class="quiet">Reset</button>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel maze-panel">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">LIVE SIMULATION</div>
+            <h2>The maze</h2>
+          </div>
+          <div class="status" id="status" aria-live="polite">Ready to search</div>
+        </div>
+        <div class="legend">
+          <span><i class="swatch start"></i> Start</span>
+          <span><i class="swatch finish"></i> Destination</span>
+          <span><i class="swatch visited"></i> Explored</span>
+          <span><i class="swatch frontier"></i> Frontier</span>
+          <span><i class="swatch path"></i> Final path</span>
+          <span><i class="swatch wall"></i> Wall</span>
+        </div>
+        <div class="maze-wrap">
+          <div id="maze" class="maze" role="img" aria-label="Maze grid showing the algorithm's search"></div>
+        </div>
+        <div class="maze-note">S = start · E = destination · Each square is a node (a location) in the graph.</div>
+      </div>
+
+      <aside class="panel stats-panel">
+        <div class="eyebrow">ALGORITHM TELEMETRY</div>
+        <h2>What is the computer doing?</h2>
+        <div class="stats-grid">
+          <div class="stat"><span class="stat-label">Cells explored</span><strong id="exploredCount">0</strong></div>
+          <div class="stat"><span class="stat-label">Frontier size</span><strong id="frontierCount">0</strong></div>
+          <div class="stat"><span class="stat-label">Path length</span><strong id="pathCount">—</strong></div>
+          <div class="stat"><span class="stat-label">Algorithm</span><strong id="algorithmLabel">BFS</strong></div>
+        </div>
+        <div class="explain-card">
+          <h3 id="explainTitle">Ready?</h3>
+          <p id="explainText">Choose an algorithm and press Run. The frontier contains locations the algorithm has discovered but has not explored yet.</p>
+        </div>
+        <div class="progress-area">
+          <div class="progress-label"><span>Search progress</span><span id="progressText">0%</span></div>
+          <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+        </div>
+        <div class="challenge">
+          <strong>Think like a computer scientist</strong>
+          <p id="question">What information must the algorithm remember so it doesn't get stuck revisiting the same cells?</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="panel concept-panel">
+      <div class="concept">
+        <span class="concept-number">01</span>
+        <div><h3>BFS uses a queue</h3><p>First in, first out (FIFO). The earliest discovered location is explored next.</p></div>
+      </div>
+      <div class="concept">
+        <span class="concept-number">02</span>
+        <div><h3>DFS uses a stack</h3><p>Last in, first out (LIFO). The most recently discovered location is explored next.</p></div>
+      </div>
+      <div class="concept">
+        <span class="concept-number">03</span>
+        <div><h3>Both use a graph</h3><p>Each open cell is a node. Valid moves between neighboring cells are edges.</p></div>
+      </div>
+    </section>
+
+    <footer>Built with vanilla JavaScript · No libraries or internet connection required</footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
